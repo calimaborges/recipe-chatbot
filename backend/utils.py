@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from prompts import load_prompt
+
 """Utility helpers for the recipe chatbot backend.
 
 This module centralises the system prompt, environment loading, and the
@@ -17,12 +19,7 @@ load_dotenv(override=False)
 
 # --- Constants -------------------------------------------------------------------
 
-SYSTEM_PROMPT: Final[str] = (
-    "You are an expert chef recommending delicious and useful recipes. "
-    "Present only one recipe at a time. If the user doesn't specify what ingredients "
-    "they have available, ask them about their available ingredients rather than "
-    "assuming what's in their fridge."
-)
+SYSTEM_PROMPT: Final[str] = load_prompt("basic.md")
 
 # Fetch configuration *after* we loaded the .env file.
 MODEL_NAME: Final[str] = (
